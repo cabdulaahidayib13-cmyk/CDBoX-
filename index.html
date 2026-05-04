@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CD BOX</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <h1>CD BOX</h1>
+  <div class="actions">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('ar')">AR</button>
+    <button onclick="googleLogin()">Google Login</button>
+    <button onclick="logoutUser()">Logout</button>
+  </div>
+</header>
+<main class="container">
+
+  <section class="hero">
+    <h2 id="welcome">Open Packs & Rise Your Rank</h2>
+    <p id="sub">Collect cards, earn stars, compete with players.</p>
+    <div id="bonusMessage"></div>
+    <button id="dailyBonusBtn" onclick="claimDailyBonus()">احصل على مكافأتك اليومية</button>
+  </section>
+
+  <section class="box userbox">
+    <h3>User: <span id="userEmail">Guest</span></h3>
+    <h3>Balance: <span id="points">0</span> Points</h3>
+    <h3>Packs Opened: <span id="opened">0</span></h3>
+    <h3>Current Rank: <span id="rankText">Unranked</span></h3>
+    <button onclick="showDeposit()">Deposit</button>
+  </section>
+
+  <section class="box">
+    <h3>Top Players</h3>
+    <ul id="leaderboard"></ul>
+  </section>
+
+  <!-- باكجات -->
+  <section class="packs" id="packsArea"></section>
+
+  <!-- الإحالات والإنجازات -->
+  <section class="box referral">
+    <h2>Invite & Earn</h2>
+    <p>Your Link:</p>
+    <input type="text" id="refLink" readonly>
+    <button onclick="copyRef()">Copy Link</button>
+    <p>Invited Users: <span id="refCount">0</span></p>
+    <p>Referral Progress: <span id="refMilestoneCount">0 / 10</span></p>
+    <p>Earnings: $<span id="earnings">0</span></p>
+  </section>
+
+  <section class="box">
+    <h2>Achievements</h2>
+    <ul id="badges"></ul>
+  </section>
+
+  <!-- عجلة الحظ -->
+  <section class="box">
+    <h2>🎡 Spin the Wheel</h2>
+    <button onclick="spinWheel()">دُر العجلة الآن</button>
+    <div id="wheelResult"></div>
+  </section>
+
+  <!-- مشاركة على واتساب/تويتر -->
+  <section class="box">
+    <h2>شارك انتصاراتك</h2>
+    <button onclick="shareWin()">شارك على واتساب</button>
+    <button onclick="shareOnTwitter()">شارك على تويتر</button>
+  </section>
+
+  <!-- قسم مجموعتي (المخزن) -->
+  <section class="box">
+    <h2>📦 مجموعتي</h2>
+    <div id="myCollection" class="my-cards-grid"></div>
+  </section>
+
+</main>
+
+<!-- Deposit Modal -->
+<div class="modal hidden" id="depositModal">
+  <div class="modal-box">
+    <h2>Deposit Points</h2>
+    <p>Send USDT to:</p>
+    <strong id="walletAddress">YOUR_BINANCE_WALLET</strong>
+    <input type="number" id="depositAmount" placeholder="Amount $">
+    <input type="text" id="depositTx" placeholder="Transaction ID">
+    <button onclick="submitDeposit()">Submit</button>
+    <button onclick="closeDeposit()">Close</button>
+  </div>
+</div>
+
+<!-- Pack Animation Modal -->
+<div class="modal hidden" id="packModal">
+  <div class="modal-box">
+    <h2>Opening Pack...</h2>
+    <div class="pack-area"><div class="spin-card" id="spinCard">🎴</div></div>
+    <h3 id="rewardText">...</h3>
+    <button onclick="closePackModal()">Close</button>
+  </div>
+</div>
+
+<!-- Probabilities Modal -->
+<div class="modal hidden" id="probModal">
+  <div class="modal-box" id="probTableWrap">
+    <h2>Card Probabilities</h2>
+    <table id="probTable"></table>
+    <button onclick="closeProbModal()">Close</button>
+  </div>
+</div>
+
+<script type="module" src="config.js"></script>
+<script type="module" src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+</body>
+</html>
