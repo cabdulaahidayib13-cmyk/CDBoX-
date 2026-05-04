@@ -1,0 +1,115 @@
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#0b0b14;
+  color:#fff;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  padding:15px 20px;
+  background:#111122;
+  border-bottom:1px solid #222;
+}
+.topbar h1{margin:0;color:#9b5cff;font-size:28px;}
+.actions{display:flex;flex-wrap:wrap;gap:8px;}
+button{
+  border:none;border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:700;
+}
+.actions button{background:#9b5cff;color:#fff;}
+.container{max-width:1200px;margin:auto;padding:20px;}
+.box{
+  background:#151528;
+  border:1px solid #24243c;
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:20px;
+}
+.hero{text-align:center;margin:20px 0 30px;}
+.hero h2{margin:0 0 10px;font-size:30px;}
+.hero p{margin:0;color:#cfcfe8;}
+.packs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-bottom:20px;
+}
+.card{
+  background:#181830;
+  border:1px solid #2b2b4d;
+  border-radius:14px;
+  padding:20px;
+  text-align:center;
+}
+.card button,.referral button{background:#ffb400;color:#111;width:100%;}
+input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  margin:8px 0;
+}
+.modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex;justify-content:center;align-items:center;
+  padding:20px;z-index:999;
+}
+.hidden{display:none;}
+.modal-box{
+  width:100%;max-width:420px;
+  background:#151528;
+  border:1px solid #24243c;
+  border-radius:14px;
+  padding:22px;
+  text-align:center;
+}
+.spinner{margin:24px auto;}
+.spin-card{
+  width:120px;height:160px;
+  margin:auto;
+  border-radius:14px;
+  background:linear-gradient(135deg,#9b5cff,#ffb400);
+  display:flex;align-items:center;justify-content:center;
+  font-size:50px;
+  animation:none;
+}
+.spin{
+  animation:spinAnim 1.5s linear infinite;
+}
+@keyframes spinAnim{
+  0%{transform:rotateY(0deg) scale(1);}
+  50%{transform:rotateY(180deg) scale(1.1);}
+  100%{transform:rotateY(360deg) scale(1);}
+}
+.my-cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+  gap:12px;
+  margin-top:10px;
+}
+.my-card{
+  background:#181830;
+  border-radius:12px;
+  padding:12px 5px;
+  text-align:center;
+  border:1px solid #222;
+}
+.my-card img{
+  width:50px;
+  height:70px;
+  border-radius:8px;
+  background:#fff;
+  object-fit:cover;
+  margin-bottom:5px;
+}
+@media(max-width:600px){
+  .hero h2{font-size:24px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
