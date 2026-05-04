@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CD BOX Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<div class="login-box">
+  <h1>Admin Panel</h1>
+  <p>Only authorized admin can access</p>
+  <button onclick="googleAdminLogin()">Login with Google</button>
+  <button onclick="logoutAdmin()">Logout</button>
+</div>
+<div class="dashboard hidden" id="dashboard">
+  <header class="topbar">
+    <h1>CD BOX Dashboard</h1>
+  </header>
+  <section class="card">
+    <h2>Edit User Data</h2>
+    <input type="text" id="userUid" placeholder="User UID">
+    <input type="number" id="amount" placeholder="Amount">
+    <button onclick="addPoints()">Add Points</button>
+    <button onclick="removePoints()">Remove Points</button>
+    <button onclick="resetOpened()">Reset Packs</button>
+    <button onclick="setAdmin()">اجعل مستخدم أدمن</button>
+  </section>
+  <section class="card">
+    <h2>Edit Packs & Config</h2>
+    <input type="text" id="limitPackType" placeholder="Pack Type: basic/pro/elite">
+    <input type="number" id="newLimit" placeholder="New Daily Limit">
+    <button onclick="setPackLimit()">تعديل حد الفتح اليومي</button>
+    <input type="text" id="probPackType" placeholder="Pack Type">
+    <input type="text" id="probStarName" placeholder="Star Name (⭐⭐⭐⭐⭐)">
+    <input type="number" id="probValue" placeholder="Probability %">
+    <button onclick="setPackProbability()">تعديل نسبة البطاقة</button>
+  </section>
+  <section class="card">
+    <h2>Leaderboard – Top 10</h2>
+    <ul id="adminLeader"></ul>
+  </section>
+</div>
+<script type="module" src="admin.js"></script>
+</body>
+</html>
